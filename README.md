@@ -35,7 +35,3 @@ The model shows a clear positive trend (predictions follow actual values), with 
 2. Upload it to your Google Colab
 3. Run all cells in order (top to bottom)
 4. View printed MSE/R² scores and the final plot
-
----
-
-*More models will be added here as the assignment progresses.*
