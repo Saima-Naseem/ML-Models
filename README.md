@@ -53,7 +53,7 @@ Built-in `diabetes` dataset from `sklearn.datasets` consisting of 442 patients, 
 ### Result
 The model shows a clear positive trend (predictions follow actual values), with moderate accuracy, typical for a multilinear model on real-world medical data with non-linear relationships.
 
-# Analysis Summary: Multiple Linear Regression — Diabetes Dataset
+# 2 - Multiple Linear Regression — Diabetes Dataset
 
 ## A. Goal
 Predict how much a patient's diabetes will progress using their health stats.
