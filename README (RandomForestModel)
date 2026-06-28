@@ -182,7 +182,7 @@ Weighted F1-score - **0.93**
 
 ---
 
-# 📊 Confusion Matrix
+# 📊 Confusion Matrix - View Png
 
 ![Random Forest Confusion Matrix](images/confusion_matrix.png)
 
@@ -201,7 +201,7 @@ Most observations appear on the diagonal of the confusion matrix, indicating str
 
 ---
 
-# ⭐ Feature Importance
+# ⭐ Feature Importance - View Png
 
 The Random Forest algorithm estimates the contribution of every feature.
 
