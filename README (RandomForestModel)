@@ -1,1 +1,286 @@
+# 🌲 Health Status Prediction using Random Forest Classifier
 
+## 📌 Project Overview
+
+This project demonstrates an end-to-end Machine Learning workflow using the **Random Forest Classification** algorithm to predict an individual's **Health Status** based on dietary habits, physical characteristics, activity level, and nutritional intake.
+
+The project was developed using **Python** and **Scikit-learn**, covering every stage of a supervised machine learning project—from data preprocessing to model evaluation and interpretation.
+
+---
+
+# 🎯 Project Objective
+
+The objective of this project is to classify an individual's health status into one of four categories:
+
+- Healthy
+- Obese
+- Overweight
+- Underweight
+
+using demographic, dietary, and lifestyle information.
+
+At first, the model trained got overfit. Analysis revealed that the model was trained, but the BMI feature dominated the model's decision-making. Therefore, the **BMI** feature was intentionally removed to prevent the model from relying on a highly correlated feature and to produce a more realistic classifier.
+
+---
+
+# 📂 Dataset - Health Status Classification. It contains **6,000 observations**.
+
+## Model Training Features
+
+| Feature |
+|---------|
+| Age |
+| Gender |
+| Height_cm |
+| Weight_kg |
+| Activity_Level |
+| Daily_Calorie_Requirement |
+| Daily_Calorie_Consumed |
+| Protein_Intake_g |
+| Carbohydrate_Intake_g |
+| Fat_Intake_g |
+| Water_Intake_Liters |
+| Diet_Type |
+
+### Target Variable - **Health Status**
+
+Target classes:
+
+- Healthy
+- Obese
+- Overweight
+- Underweight
+
+---
+
+# 🛠 Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Google Colab
+
+---
+
+# 🚀 Machine Learning Workflow
+
+## Step 1 — Import Libraries
+
+Imported all required libraries for:
+
+- Data manipulation
+- Data preprocessing
+- Model building
+- Model evaluation
+- Visualization
+---
+## Step 2 — Load Dataset. The dataset was loaded using Pandas.
+
+```python
+df = pd.read_csv("filename")
+```
+## Step 3 — Feature Selection. The following columns were removed before training:
+
+- Person_ID
+- BMI
+- Health_Status (Target)
+
+BMI was intentionally removed to avoid data leakage as described earlier.
+
+## Step 4 — Encode Categorical Variables
+
+Since Machine Learning algorithms cannot work directly with text values, categorical variables were converted into numerical features using **One-Hot Encoding**.
+
+Encoded columns:
+
+- Gender
+- Activity_Level
+- Diet_Type
+
+---
+
+## Step 5 — Encode Target Labels
+
+The target variable (**Health_Status**) was converted into numeric labels using **LabelEncoder**.
+
+Mapping:
+
+| Encoded Value | Health Status |
+|--------------:|--------------|
+| 0 | Healthy |
+| 1 | Obese |
+| 2 | Overweight |
+| 3 | Underweight |
+
+---
+
+## Step 6 — Split Dataset
+
+The dataset was divided into training and testing datasets.
+
+Training Data - 80%
+
+Testing Data - 20%
+
+Random State - 42. It ensures reproducible results.
+
+Training samples - 4800
+
+Testing samples - 1200
+
+# 🌲 Random Forest Model Training
+
+A Random Forest classifier was selected because it is one of the most powerful supervised learning algorithms for classification problems. 
+Unlike a single Decision Tree, Random Forest builds multiple trees and combines their predictions using majority voting.
+
+Model configuration:
+
+```python
+rf_model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
+```
+
+### Training Process
+
+The model was trained using:
+
+```python
+rf_model.fit(x_train, y_train)
+```
+
+During training:
+
+- 100 Decision Trees were constructed.
+- Each tree was trained using a random subset of the training data.
+- Each split is considered a random subset of features.
+- Every tree learned different patterns from the dataset.
+- During prediction, every tree voted for one of the four health classes.
+- The class receiving the highest number of votes became the final prediction.
+
+This ensemble approach reduces overfitting and generally produces better performance than a single Decision Tree.
+
+# 📈 Model Performance
+
+## Accuracy - 92.83%
+
+## Classification Report
+
+| Class | Precision | Recall | F1-score |
+|-------|----------:|--------:|---------:|
+| Healthy | 0.97 | 0.95 | 0.96 |
+| Obese | 0.97 | 0.83 | 0.89 |
+| Overweight | 0.88 | 0.97 | 0.92 |
+| Underweight | 1.00 | 0.82 | 0.90 |
+
+Overall Accuracy - **92.83%**
+
+Weighted F1-score - **0.93**
+
+---
+
+# 📊 Confusion Matrix
+
+![Random Forest Confusion Matrix](images/confusion_matrix.png)
+
+### Interpretation
+
+The confusion matrix shows that the classifier correctly predicted the majority of observations.
+
+Key observations:
+
+- **Healthy:** 433 were correctly classified, while 25 were predicted as Overweight.
+- **Obese:** 191 correctly classified, with 40 misclassified as Overweight.
+- **Overweight:** 459 correctly classified, making it the best-performing class in terms of recall.
+- **Underweight:** 31 out of 38 samples were correctly identified despite being the smallest class.
+
+Most observations appear on the diagonal of the confusion matrix, indicating strong classification performance.
+
+---
+
+# ⭐ Feature Importance
+
+The Random Forest algorithm estimates the contribution of every feature.
+
+Top features:
+
+| Rank | Feature | Importance |
+|------:|---------|-----------:|
+| 1 | Weight_kg | 27.85% |
+| 2 | Height_cm | 19.64% |
+| 3 | Daily_Calorie_Consumed | 12.53% |
+| 4 | Daily_Calorie_Requirement | 7.78% |
+| 5 | Carbohydrate_Intake_g | 6.49% |
+| 6 | Fat_Intake_g | 5.70% |
+| 7 | Protein_Intake_g | 4.57% |
+| 8 | Water_Intake_Liters | 4.17% |
+| 9 | Age | 3.88% |
+
+Weight and Height together contributed nearly half of the model's predictive power after BMI was removed.
+
+---
+
+# 💡 Why BMI Was Removed
+
+An earlier experiment achieved nearly **100% accuracy** because the model relied heavily on the BMI feature.
+
+Since BMI is directly calculated from Height and Weight and is strongly associated with Health Status, it introduces potential **data leakage**.
+
+To build a more realistic model, BMI was excluded before training.
+
+The resulting model achieved:
+
+**92.83% Accuracy**
+
+This represents a more reliable estimate of real-world performance.
+---
+
+# ▶️ How to Run
+
+1. Clone the repository.
+
+```bash
+git clone <repository-url>
+```
+
+2. Install dependencies.
+
+```bash
+pip install pandas numpy matplotlib scikit-learn
+```
+
+3. Open the notebook using Jupyter Notebook or Google Colab.
+
+4. Run all cells from top to bottom.
+
+---
+
+# 📚 Learning Outcomes
+
+This project demonstrates:
+
+- Data preprocessing
+- One-Hot Encoding
+- Label Encoding
+- Train/Test Split
+- Random Forest Classification
+- Model Training
+- Prediction
+- Accuracy Evaluation
+- Classification Report
+- Confusion Matrix Interpretation
+- Feature Importance Analysis
+- Understanding and preventing data leakage
+
+---
+
+# 👩‍💻 Author
+
+**Saima Naseem**
+
+Machine Learning • Data Analytics • NLP • SAP • Kaggle
+
+Passionate about building practical Machine Learning projects that solve real-world problems through data.
