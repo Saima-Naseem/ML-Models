@@ -258,6 +258,37 @@ pip install pandas numpy matplotlib scikit-learn
 
 ---
 
+**Important Notes Before Running the Notebook**
+
+For the best experience, please follow these guidelines:
+
+✅ Run the notebook from top to bottom
+
+The notebook is designed to be executed sequentially.
+
+Avoid running random cells individually because later cells depend on variables created in earlier steps.
+
+✅ Run each preprocessing cell only once
+
+The preprocessing steps modify the dataset.
+
+Running them multiple times without recreating the original data may produce errors or unexpected results.
+
+✅ Restart the runtime before rerunning the project
+
+If you want to execute the notebook again from the beginning:
+
+Google Colab
+
+Runtime → Restart Session
+
+Jupyter Notebook
+
+Kernel → Restart Kernel
+
+
+---
+
 # 📚 Learning Outcomes
 
 This project demonstrates:
@@ -280,7 +311,5 @@ This project demonstrates:
 # 👩‍💻 Author
 
 **Saima Naseem**
-
-Machine Learning • Data Analytics • NLP • SAP • Kaggle
 
 Passionate about building practical Machine Learning projects that solve real-world problems through data.
