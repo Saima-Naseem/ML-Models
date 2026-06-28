@@ -1,4 +1,5 @@
 # ML Models
+
 # 1- Simple Linear Regression - Mango Weight and Price Dataset
 ## Simple Linear Regression — Mango Weight vs Price
 
@@ -30,7 +31,7 @@ Only **one** input feature (Weight) is used to predict the target (Price), unlik
 3. Run all cells in order (top to bottom)
 4. View the R² score, coefficient/intercept, and the final fitted-line plot
 
-2 - Multiple Linear Regression (Diabetes Dataset)
+2 - **Multiple Linear Regression (Diabetes Dataset)**
 
 ### Goal
 Predict disease progression in diabetes patients using health measurements (age, BMI, blood pressure, etc.) with a simple linear regression model.
@@ -53,7 +54,7 @@ Built-in `diabetes` dataset from `sklearn.datasets` consisting of 442 patients, 
 ### Result
 The model shows a clear positive trend (predictions follow actual values), with moderate accuracy, typical for a multilinear model on real-world medical data with non-linear relationships.
 
-# 2 - Multiple Linear Regression — Diabetes Dataset
+# Analysis Summary - Multiple Linear Regression — Diabetes Dataset
 
 ## A. Goal
 Predict how much a patient's diabetes will progress using their health stats.
