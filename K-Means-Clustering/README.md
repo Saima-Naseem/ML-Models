@@ -189,6 +189,12 @@ Higher values indicate better-separated clusters.
 
 The obtained score indicates good clustering performance.
 
+### Silhouette Plot
+
+A Silhouette Plot was generated to visually assess cluster quality. The plot displays the silhouette coefficient for each observation within each cluster, along with the average silhouette score, indicated by a vertical dashed line.
+
+The visualization confirmed that the clusters are reasonably compact and well separated, supporting the numerical Silhouette Score of **0.5967**.
+
 ### Davies-Bouldin Index
 
 ```python
@@ -229,6 +235,7 @@ The obtained value demonstrates good overall cluster separation.
 |-------------------|--------|----------------|
 | Elbow Method | K = 3 | Optimal number of clusters |
 | Silhouette Score | 0.5967 | Good cluster separation |
+| Silhouette Plot | Visual Assessment | Confirms cluster compactness and separation
 | Davies-Bouldin Index | 0.5948 | Good cluster compactness |
 | Calinski-Harabasz Index | 4811.54 | Strong clustering quality |
 
@@ -255,6 +262,9 @@ The optimal value of K is selected where the WCSS curve begins to flatten.
 Centroids represent the average position of each cluster and are not actual observations.
 
 Silhouette Score measures how well observations fit within their assigned cluster.
+
+A Silhouette Plot provides a visual confirmation of cluster quality by showing how well each observation fits within its assigned cluster and
+whether any observations overlap with neighbouring clusters.
 
 Davies-Bouldin Index evaluates cluster compactness and separation.
 
